@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kripto & Setago</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="p-4" data-aos="fade-down">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a class="text-xl font-bold text-[#8B00FF]" href="#beranda"
+          >Kripto&Setago</a
+        >
+        <div class="flex gap-4">
+          <a href="#enkripsi" class="nav-link">Enkripsi</a>
+          <a href="#dekripsi" class="nav-link">Dekripsi</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Beranda Section -->
+    <section id="beranda" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <h1
+          class="text-4xl font-bold mb-4"
+          data-aos="fade-down"
+          data-aos-delay="100"
+        >
+          Welcome to <span class="text-[#8B00FF]">Our</span> Website
+        </h1>
+        <p class="text-xl mb-8" data-aos="fade-up" data-aos-delay="200">
+          Media untuk Enkripsi dan Dekripsi sebuah pesan memakai Caesar Cipher
+          dan Steganografi LSB
+          <br />
+          <br />
+          Hide Your Message Now!
+        </p>
+        <div
+          class="flex justify-center gap-4"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
+          <a href="#enkripsi" class="custom-button">Enkripsi</a>
+          <a href="#dekripsi" class="custom-button">Dekripsi</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="max-w-3xl mx-auto px-4">
+      <!-- Enkripsi Section -->
+      <section
+        id="enkripsi"
+        class="form-container"
+        data-aos="fade-right"
+        data-aos-duration="1000"
+      >
+        <h2 class="text-2xl font-bold mb-6">Enkripsi</h2>
+        <form id="enkripsiForm" class="space-y-6">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <label class="block mb-2">Masukkan Gambar:</label>
+            <input
+              type="file"
+              class="w-full p-2 rounded bg-gray-800"
+              id="imageInput"
+              accept="image/*"
+              required
+            />
+            <img
+              id="previewImage"
+              class="preview-image mt-4"
+              style="display: none"
+            />
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200">
+            <label class="block mb-2">Masukkan Pesan:</label>
+            <textarea
+              class="w-full p-2 rounded bg-gray-800"
+              id="pesanInput"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="300">
+            <label class="block mb-2">Masukkan Kunci (angka):</label>
+            <input
+              type="number"
+              class="w-full p-2 rounded bg-gray-800"
+              id="keyInput"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="custom-button w-full"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            Enkripsi
+          </button>
+        </form>
+
+        <div id="hasilEnkripsi" class="mt-8">
+          <h4 class="text-xl font-semibold mb-4">Hasil Enkripsi:</h4>
+          <div class="space-y-4">
+            <div>
+              <label class="block mb-2">Ciphertext:</label>
+              <textarea
+                class="w-full p-2 rounded bg-gray-800"
+                id="ciphertextOutput"
+                rows="3"
+                readonly
+              ></textarea>
+            </div>
+            <div>
+              <label class="block mb-2">Hasil Gambar:</label>
+              <img
+                id="stegoImage"
+                class="preview-image"
+                style="display: none"
+              />
+              <a
+                id="downloadLink"
+                class="custom-button mt-4 inline-block w-full"
+                style="display: none"
+                >Download</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dekripsi Section -->
+      <section
+        id="dekripsi"
+        class="form-container"
+        data-aos="fade-left"
+        data-aos-duration="1000"
+      >
+        <h2 class="text-2xl font-bold mb-6">Dekripsi</h2>
+        <form id="dekripsiForm" class="space-y-6">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <label class="block mb-2">Masukkan Gambar Stego:</label>
+            <input
+              type="file"
+              class="w-full p-2 rounded bg-gray-800"
+              id="stegoImageInput"
+              accept="image/*"
+              required
+            />
+            <img
+              id="previewStegoImage"
+              class="preview-image mt-4"
+              style="display: none"
+            />
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200">
+            <label class="block mb-2">Ciphertext:</label>
+            <div class="space-y-2">
+                <textarea
+                    class="w-full p-2 rounded bg-gray-800"
+                    id="ciphertextInput"
+                    rows="3"
+                    placeholder="Masukkan ciphertext yang akan didekripsi"
+                    required
+                ></textarea>
+                <div class="text-sm text-gray-400">
+                    *Masukkan ciphertext secara manual untuk melakukan dekripsi
+                </div>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="300">
+            <label class="block mb-2">Masukkan Kunci (angka):</label>
+            <input
+              type="number"
+              class="w-full p-2 rounded bg-gray-800"
+              id="keyDekripsi"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="custom-button w-full"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            Dekripsi
+          </button>
+        </form>
+
+        <div id="hasilDekripsi" class="mt-8">
+          <h4 class="text-xl font-semibold mb-4">Hasil Dekripsi:</h4>
+          <div>
+            <label class="block mb-2">Pesan Asli:</label>
+            <textarea
+              class="w-full p-2 rounded bg-gray-800"
+              id="pesanOutput"
+              rows="3"
+              readonly
+            ></textarea>
+          </div>
+        </div>
+      </section>
+      
+
+            <!-- Tambahkan input file untuk memuat hasil pixel -->
+    <section
+      id="pixelUpload"
+      class="form-container"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      <h2 class="text-2xl font-bold mb-6">Upload Pixel Data</h2>
+      <div class="form-group mt-3">
+        <label>Upload file pixel sebelum:</label>
+        <input type="file" class="form-control" onchange="loadPixelFile(this, 'beforePixels')" accept=".txt">
+      </div>
+      <div class="form-group mt-3">
+        <label>Upload file pixel sesudah:</label>
+        <input type="file" class="form-control" onchange="loadPixelFile(this, 'afterPixels')" accept=".txt">
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" onclick="comparePixels()">Bandingkan Pixel</button>
+        <div id="comparisonResult" class="mt-3"></div>
+      </div>
+    </section>
+
+        <!-- Tab untuk perbandingan output -->
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-header">
+            <h5>Perbandingan Output Pixel RGBA</h5>
+          </div>
+          <div class="card-body">
+            <div class="row"> 
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="beforePixels">Pixel RGBA Sebelum:</label>
+                  <textarea class="form-control" id="beforePixels" rows="10" readonly></textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="afterPixels">Pixel RGBA Sesudah:</label>
+                  <textarea class="form-control" id="afterPixels" rows="10" readonly></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <button class="btn btn-primary" onclick="comparePixels()">Bandingkan Pixel</button>
+                <div id="comparisonResult" class="mt-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16" data-aos="fade-up">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p>&copy; 2024 Kelompok 4.</p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+    function comparePixels() {
+      const beforeText = document.getElementById('beforePixels').value;
+      const afterText = document.getElementById('afterPixels').value;
+      
+      const beforePixels = beforeText.split('\n').filter(line => line.trim());
+      const afterPixels = afterText.split('\n').filter(line => line.trim());
+      
+      let differences = [];
+      let totalDiff = 0;
+      
+      // Bandingkan setiap pixel
+      for (let i = 0; i < beforePixels.length; i++) {
+        if (beforePixels[i] !== afterPixels[i]) {
+          differences.push(`Baris ${i+1}: ${beforePixels[i]} → ${afterPixels[i]}`);
+          totalDiff++;
+        }
+      }
+      
+      // Tampilkan hasil perbandingan
+      const resultDiv = document.getElementById('comparisonResult');
+      if (differences.length > 0) {
+        let html = `<div class="alert alert-info">
+          <h6>Ditemukan ${totalDiff} perbedaan pixel:</h6>
+          <ul>`;
+        differences.forEach(diff => {
+          html += `<li>${diff}</li>`;
+        });
+        html += '</ul></div>';
+        resultDiv.innerHTML = html;
+      } else {
+        resultDiv.innerHTML = '<div class="alert alert-success">Tidak ada perbedaan pixel yang ditemukan.</div>';
+      }
+    }
+
+    // Fungsi untuk memuat file txt ke textarea
+    function loadPixelFile(fileInput, targetTextarea) {
+      const file = fileInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById(targetTextarea).value = e.target.result;
+        };
+        reader.readAsText(file);
+      }
+    }
+    </script>
+
+
+  </body>
+</html>
