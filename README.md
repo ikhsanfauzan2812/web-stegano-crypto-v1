@@ -71,12 +71,6 @@ To extract the message:
 
 ---
 
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as you wish! 💡
-
----
-
 ## 🙌 Contributing
 
 We welcome contributions! 🎉  
